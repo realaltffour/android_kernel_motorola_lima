@@ -800,7 +800,7 @@ static ssize_t reg_dump_store(struct class *class,
 		int i = 0;
 
 		if( count != 3){
-			LOG_ERR("%s :params error[ count == %d !=2]\n",__func__,count);
+			LOG_ERR("%s :params error[ count == %zu !=2]\n",__func__,count);
 			return -1;
 		}
 		for(i = 0 ; i < count ; i++)

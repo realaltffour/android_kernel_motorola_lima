@@ -837,7 +837,7 @@ static ssize_t drv2624_file_write(struct file* filp, const char* buff, size_t le
 		if (len == 2)
 			pDRV2624->mnCurrentReg = p_kBuf[1];
 		else
-			dev_err(pDRV2624->dev, " read cmd len %d err\n", len);
+			dev_err(pDRV2624->dev, " read cmd len %zu err\n", len);
 		break;
 	case HAPTIC_CMDID_REG_WRITE:
 		if ((len - 1) == 2)
@@ -845,13 +845,13 @@ static ssize_t drv2624_file_write(struct file* filp, const char* buff, size_t le
 		else if ((len - 1) > 2)
 			nResult = drv2624_bulk_write(pDRV2624, p_kBuf[1], &p_kBuf[2], len-2);
 		else
-			dev_err(pDRV2624->dev, "%s, reg_write len %d error\n", __func__, len);
+			dev_err(pDRV2624->dev, "%s, reg_write len %zu error\n", __func__, len);
 		break;
 	case HAPTIC_CMDID_REG_SETBIT:
 		if (len == 4)
 			nResult = drv2624_set_bits(pDRV2624, p_kBuf[1], p_kBuf[2], p_kBuf[3]);
 		else
-			dev_err(pDRV2624->dev, "setbit len %d error\n", len);
+			dev_err(pDRV2624->dev, "setbit len %zu error\n", len);
 		break;
 	case HAPTIC_CMDID_RUN_DIAG:
 		nResult = drv2624_stop(pDRV2624);
