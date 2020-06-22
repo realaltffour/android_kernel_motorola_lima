@@ -1557,15 +1557,12 @@ static int fts_ts_driver_init(void)
 {
     int ret = 0;
 
-    if (get_boot_mode() != KERNEL_POWER_OFF_CHARGING_BOOT
-        && get_boot_mode() != LOW_POWER_OFF_CHARGING_BOOT) {
         /* ---add spi driver--- */
         ret = spi_register_driver(&fts_ts_driver);
         if (ret) {
             FTS_ERROR("failed to add spi driver");
             goto err_driver;
         }
-    }
 
 err_driver:
     return ret;

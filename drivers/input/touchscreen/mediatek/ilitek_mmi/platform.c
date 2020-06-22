@@ -1484,14 +1484,11 @@ static int ilitek_platform_probe_spi(struct spi_device *spi)
 	}
 #endif
 
-	if (get_boot_mode() != KERNEL_POWER_OFF_CHARGING_BOOT
-		&& get_boot_mode() != LOW_POWER_OFF_CHARGING_BOOT) {
 		ipio_err("boot mode is not Charger\n");
 		if (ilitek_platform_reg_suspend() < 0) {
 			ipio_err("Failed to register suspend/resume function\n");
 			goto fail_reg_suspend;
 		}
-	}
 
 	if (ilitek_platform_reg_power_check() < 0) {
 		ipio_err("Failed to register power check function\n");
